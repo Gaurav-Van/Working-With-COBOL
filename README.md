@@ -4,7 +4,7 @@ This repository contains basic information and concepts of COBOL. It also includ
 
 ### Column Structure of COBOL
 
-![](file:///C:/Users/gj979/Downloads/SAP%20Basics/SAP%20Lang%20png/blob.jpeg)
+![image](https://github.com/Gaurav-Van/Working-With-COBOL/assets/50765800/e6a780b9-18c8-4f91-ae70-641b4256bd0d)
 
 1. **Sequence Number Area (Columns 1-6)**:
    
@@ -41,7 +41,7 @@ This repository contains basic information and concepts of COBOL. It also includ
 
 ### Heirarchical Code Structure of COBOL
 
-<img title="" src="file:///C:/Users/gj979/Downloads/SAP%20Basics/SAP%20Lang%20png/blob%20(1).jpeg" alt="">
+![image](https://github.com/Gaurav-Van/Working-With-COBOL/assets/50765800/645a84fc-0118-41ce-a4ee-617997c22245)
 
 * **Divisions**: The topmost level of the hierarchy, divisions are the largest units in a COBOL program. There are four main divisions:
   
@@ -64,27 +64,27 @@ This repository contains basic information and concepts of COBOL. It also includ
 
 we use `Picture Clause` or `PIC`. It sets the Datatype and length of the variable. `PIC Datatype(Length)`
 
-###### Numeric
+#### Numeric
 
 `PIC 9` Single numeric value. *9* here represents numeric datatype. 
 
 `PIC 9(4)` four numeric values 
 
-###### Alphabetic
+#### Alphabetic
 
 `PIC A` Single Alphabetic Character. 
 
-###### Alphanumeric
+#### Alphanumeric
 
 `PIC X` Single Alphanumeric Character 
 
 `PIC X(8)` Eight Alphanumeric Character
 
-##### Decimal Position
+#### Decimal Position
 
 `V` represents decimal position
 
-###### Represent Symbols in the value
+#### Represent Symbols in the value
 
 `PIC 9(4)V99` used to represents number like 2857.96 or 1234.56
 
@@ -237,7 +237,7 @@ Values that have multiple use cases but needs to be define and initialized only 
   * Encapsulate functionality: A paragraph represents a specific action or operation.
 
 * **Example of a COBOL Paragraph:**
-  
+  ```cobol
       IDENTIFICATION DIVISION.
       PROGRAM-ID. MYPROGRAM.
       
@@ -253,7 +253,7 @@ Values that have multiple use cases but needs to be define and initialized only 
       
       CALCULATE-SUM.
           ADD NUM2 TO NUM1.
-  
+  ```
   
 
 `PERFORM` Statement (Similar to Loops):
@@ -271,7 +271,7 @@ Values that have multiple use cases but needs to be define and initialized only 
   * Specify the paragraph name after `PERFORM`.
 
 * **Example of `PERFORM`:**
-  
+  ```cobol
       IDENTIFICATION DIVISION.
       PROGRAM-ID. LOOPSAMPLE.
       
@@ -284,6 +284,7 @@ Values that have multiple use cases but needs to be define and initialized only 
               DISPLAY "Counter: " COUNTER
           END-PERFORM
           STOP RUN.
+  ```
 
 <hr>
 
@@ -303,10 +304,9 @@ Values that have multiple use cases but needs to be define and initialized only 
   * The called program can be a separate COBOL program or a specific section within the same program.
   * Data can be passed between the calling program and the called program using parameters.
 
-* **Types of Program Linkage:**
-  
-  1. **Static Linkage**:
-     
+* **Types of Program Linkage:**<br><br>
+ `Static Linkage`
+
      * The called program is a separate COBOL program with its own source code.
      
      * The calling program references the called program by name.
@@ -318,7 +318,8 @@ Values that have multiple use cases but needs to be define and initialized only 
        ```
        CALL 'MYPROG' USING data-parameters
        ```
-2. **Dynamic Linkage**:
+
+  `Dynamic Linkage`
    
    * The called program is dynamically loaded at runtime (e.g., as a shared library or DLL).
    
@@ -334,7 +335,7 @@ Values that have multiple use cases but needs to be define and initialized only 
 
 ---------------
 
-##### Linkage Section in COBOL
+#### Linkage Section in COBOL
 
 * The **Linkage Section** serves as an interface between different COBOL programs or subprograms.
 * Its primary role is to declare variables that can be accessed by another program (usually the calling program).
@@ -343,7 +344,7 @@ Values that have multiple use cases but needs to be define and initialized only 
   * Sending data from the calling program to the called program.
   * Receiving data from the called program back to the calling program.
 
-![c3040b0d-6cb4-40ae-ae77-f9b102f9d9f8](file:///C:/Users/gj979/OneDrive/Pictures/Typedown/c3040b0d-6cb4-40ae-ae77-f9b102f9d9f8.png)
+![image](https://github.com/Gaurav-Van/Working-With-COBOL/assets/50765800/122c5279-3d57-455a-87b0-9883f43e2618)
 
 <hr>
 
@@ -352,13 +353,13 @@ Values that have multiple use cases but needs to be define and initialized only 
 `FILLER` Add things in between. Keyword in cobol. 
 `FILLER     PIC X(05) VALUE SPACES` adds 5 spaces. 
 
-![a13c6e58-bc53-4e81-9a11-fe0d726cdc0d](file:///C:/Users/gj979/OneDrive/Pictures/Typedown/a13c6e58-bc53-4e81-9a11-fe0d726cdc0d.png)
+![image](https://github.com/Gaurav-Van/Working-With-COBOL/assets/50765800/b6fdba13-a0c3-4f04-bcb2-95d7fb0ecd32)
 
 <hr>
 
 ### Conditional Expressions
 
-```cobol
+```
 IF Condition DO/DISPLAY/ACTION_KEYWORD action
     ELSE DO/DISPLAY/ACTION_KEYWORD action
 END-IF
@@ -394,7 +395,7 @@ intrinsic functions (also known as built-in functions) provide a set of predefin
 
 `ABS` Returns the absolute value of a numeric argument. `ANNUITY` Calculates the ratio of an annuity payment to an initial value. `Upper-case` `Lower-case` | `FV` Calculates the future value of an investment. `PV` Computes the present value of future cash flows. `RATE` Determines the interest rate for an investment.
 
-![6d4b5565-94ce-476a-8427-d0fe42fe2350](file:///C:/Users/gj979/OneDrive/Pictures/Typedown/6d4b5565-94ce-476a-8427-d0fe42fe2350.png)
+![image](https://github.com/Gaurav-Van/Working-With-COBOL/assets/50765800/1bdcd6b0-6470-444b-be0f-e5cfaa6d7084)
 
 <hr>
 
