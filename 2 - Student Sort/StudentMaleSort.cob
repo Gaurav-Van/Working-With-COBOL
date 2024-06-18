@@ -1,0 +1,61 @@
+000100 IDENTIFICATION DIVISION.
+000200 PROGRAM-ID.  StudentMaleSort.
+000300* Uses the the SORT and an INPUT PROCEDURE to read
+000400* the student masterfile (sorted on ascending Student Id)
+000500* and from it to produce a file containing only the records of
+000600* male students sorted on ascending student name.
+000700  
+000800 ENVIRONMENT DIVISION.
+000900 INPUT-OUTPUT SECTION.
+001000 FILE-CONTROL.
+001100     SELECT StudentFile ASSIGN TO "STUDENTS.DAT"
+001200 	   ORGANIZATION IS LINE SEQUENTIAL.
+001300 
+001400     SELECT MaleStudentFile ASSIGN TO "MALESTUDS.DAT"
+001500 	   ORGANIZATION IS LINE SEQUENTIAL.
+001600 
+001700     SELECT WorkFile ASSIGN TO "WORK.TMP".
+001800 
+001900 
+002000 DATA DIVISION.
+002100 FILE SECTION.
+002200 FD StudentFile.
+002300 01 StudentRec      PIC X(30).
+002400    88 EndOfFile    VALUE HIGH-VALUES.
+002500 
+002600 FD MaleStudentFile.
+002700 01 MaleStudentRec  PIC X(30).
+002800 
+002900 SD WorkFile.
+003000 01 WorkRec.
+003100    02 FILLER             PIC 9(7).
+003200    02 WStudentName       PIC X(10).
+003300    02 FILLER             PIC X(12).
+003400    02 WGender            PIC X.
+003500       88 MaleStudent     VALUE "M".
+003600 
+003700 
+003800 PROCEDURE DIVISION.
+003900 Begin.
+004000     SORT WorkFile ON ASCENDING KEY WStudentName
+004100         INPUT PROCEDURE IS GetMaleStudents
+004200         GIVING MaleStudentFile.
+004300     STOP RUN.
+004400 
+004500 
+004600 GetMaleStudents.
+004700      OPEN INPUT StudentFile
+004800     READ StudentFile
+004900       AT END SET EndOfFile TO TRUE
+005000     END-READ
+005100     PERFORM UNTIL EndOfFile
+005200       MOVE StudentRec TO WorkRec
+005300       IF MaleStudent
+005400          RELEASE WorkRec
+005500       END-IF
+005600       READ StudentFile
+005700         AT END SET EndOfFile TO TRUE
+005800       END-READ 
+005900     END-PERFORM
+006000     CLOSE StudentFile.
+006100     
